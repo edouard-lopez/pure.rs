@@ -49,8 +49,10 @@ A block without a trailing `;` returns its last expression. That is why `render`
 
 ## Tests
 
-- `#[cfg(test)] mod tests` compiles only under `cargo test`.
+- `#[cfg(test)] mod tests;` compiles only under `cargo test`. It has no body, so Rust loads the file for you.
+- For `src/prompt_symbol.rs`, the file is `src/prompt_symbol/tests.rs`. For `src/main.rs`, it is `src/tests.rs`.
 - `use super::*;` imports everything from the parent module, private items included.
+- Unit tests in a child module can reach private items. Files in a top-level `tests/` folder are *integration tests* and see only `pub` items.
 
 ## Try it
 
